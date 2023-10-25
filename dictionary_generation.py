@@ -2,7 +2,7 @@ import networkx as nx
 import random
 
 
-# Generates a list D of graphs with L elements, where each graph is generated using ER(n, p), where n is the number of nodes and p is the probability that each pair of nodes has a connection betwen them. 
+# Generates a list D of graphs with L elements, where each graph G_i is obtained by rewiring one link in G_{i-1}. The first graph in the list is  generated using ER(n, p), where n is the number of nodes and p is the probability that each pair of nodes has a connection betwen them. 
 # Returns the list D and the list D_metric which is subdivides the interval [0,1] into equidistant subsections, such that each subsection is [k/L, (k+1)/L], k = 0,1, ..., L-1
 def generate_dictionary(n, p, L, seed=0):
         
@@ -17,8 +17,6 @@ def generate_dictionary(n, p, L, seed=0):
     D[0] = G1
     D_metric[0] = 0
     D_metric[-1] = 1
-
-
 
     # Defines the history of edge rewiring
     links_original = G1.edges
